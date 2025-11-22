@@ -2,9 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package core;
+package core.views;
 
-import com.formdev.flatlaf.FlatDarkLaf;
 import static core.controllers.AuthorController.CreateAuthor;
 import static core.controllers.AuthorWithMostDifferentsBooksTableController.updateAuthorWithMostDifferentsBooks;
 import static core.controllers.BookByAuthorTableController.updateBookByAuthorTable;
@@ -18,7 +17,6 @@ import static core.controllers.NarratorController.CreateNarrator;
 import static core.controllers.PersonasTableController.updatePersonasTable;
 import static core.controllers.PublisherController.createPublisher;
 import java.util.ArrayList;
-import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import static core.controllers.StandController.CreateStand;
 import static core.controllers.StandTableController.updateStandTable;
@@ -31,13 +29,6 @@ import javax.swing.JOptionPane;
  * @author edangulo
  */
 public class MegaferiaFrame extends javax.swing.JFrame {
-
-    private ArrayList<Stand> stands;
-    private ArrayList<Author> authors;
-    private ArrayList<Manager> managers;
-    private ArrayList<Narrator> narrators;
-    private ArrayList<Publisher> publishers;
-    private ArrayList<Book> books;
     
     /**
      * Creates new form MegaferiaFrame
@@ -45,12 +36,6 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     public MegaferiaFrame() {
         initComponents();
         setLocationRelativeTo(null);
-        this.stands = new ArrayList<>();
-        this.authors = new ArrayList<>();
-        this.managers = new ArrayList<>();
-        this.narrators = new ArrayList<>();
-        this.publishers = new ArrayList<>();
-        this.books = new ArrayList<>();
     }
 
     /**
@@ -1710,21 +1695,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        System.setProperty("flatlaf.useNativeLibrary", "false");
-        
-        try {
-            UIManager.setLookAndFeel(new FlatDarkLaf());
-        } catch (Exception ex) {
-            System.err.println("Failed to initialize LaF");
-        }
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MegaferiaFrame().setVisible(true);
-            }
-        });
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddAuthor;
