@@ -12,5 +12,5 @@ import core.controllers.utils.Response;
  */
 public interface StandService {
     
-    Response CreateStand(String id, String price);
+    Response CreateStand(int id, double price);
 }

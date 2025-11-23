@@ -18,19 +18,6 @@ import java.util.ArrayList;
 public class BuyStand {
     public static Response buyStandM(String[] standIds, String[] publishersData){
         try{
-            if (standIds.length == 1 && standIds[0].trim().equals("")){
-                        return new Response("select at least 1 stand", Status.BAD_REQUEST);
-            }
-            if (publishersData.length == 1 && publishersData[0].trim().equals("")){
-                        return new Response("select at least 1 publisher", Status.BAD_REQUEST);
-            } 
-           
-            if (standIds.length == 1 && standIds[0].trim().equals("Seleccione uno...")){
-                        return new Response("select at least 1 stand", Status.BAD_REQUEST);
-            }
-            if (publishersData.length == 1 && publishersData[0].trim().equals("Seleccione uno...")){
-                        return new Response("select at least 1 publisher", Status.BAD_REQUEST);
-            } 
             
             Storage storage = Storage.getInstance();
             

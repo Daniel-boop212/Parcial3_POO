@@ -16,28 +16,8 @@ import core.Author;
 public class CreateAuthor implements PersonService{
     
     @Override
-    public Response createPerson(String id, String firstname, String lastname){
+    public Response createPerson(int idInt, String firstname, String lastname){
         try{
-            int idInt;
-            try {
-                idInt = Integer.parseInt(id.trim());
-                if (id.length() > 15){
-                    return new Response("Id must have 15 digit or less", Status.BAD_REQUEST);
-                }
-                if (idInt < 0) {
-                    return new Response("Id must be positive", Status.BAD_REQUEST);
-                }
-            } catch (NumberFormatException ex) {
-                return new Response("Id must be numeric", Status.BAD_REQUEST);
-            }
-            
-            if (firstname.trim().equals("")) {
-                return new Response("Firstname must be not empty", Status.BAD_REQUEST);
-            }
-            
-            if (lastname.trim().equals("")) {
-                return new Response("Lastname must be not empty", Status.BAD_REQUEST);
-            }
             
             Storage storage = Storage.getInstance();
             if (!storage.addAuthor(new Author(idInt, firstname, lastname))) {

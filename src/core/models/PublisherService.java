@@ -13,6 +13,6 @@ import core.controllers.utils.Response;
  */
 public interface PublisherService {
     
-    Response createPublisher(String nit, String name, String address, String[] managerData);
+    Response createPublisher(String nit, String name, String address, int managerId);
     
 }

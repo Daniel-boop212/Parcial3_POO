@@ -5,6 +5,10 @@
 package core.models;
 
 import core.controllers.utils.Response;
+import java.util.ArrayList;
+import core.Author;
+import core.Narrator;
+import core.Publisher;
 
 /**
  *
@@ -12,6 +16,6 @@ import core.controllers.utils.Response;
  */
 public interface BookService{
     
-    Response createBook(String title, String[] authorsData, String isbn, String genre, String format, String value, String publisherData, String pages, String copies, String hyperlink, String duration, String[] narratorData);
+    Response createBook(String title, ArrayList<Author> authors, String isbn, String genre, String format, double value, Publisher publisher, int pages, int copies, String hyperlink, int duration, Narrator narrator);
 
 }

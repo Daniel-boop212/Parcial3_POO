@@ -9,6 +9,7 @@ import core.Manager;
 import core.Narrator;
 import core.controllers.utils.Response;
 import core.controllers.utils.Status;
+import static core.models.PersonasTable.updatePersonasTableM;
 import core.models.storage.Storage;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -21,20 +22,7 @@ public class PersonasTableController {
     
     public static void updatePersonasTable(DefaultTableModel model){
         try{
-            Storage storage = Storage.getInstance();
-            for (Author author : storage.getAutores()) {
-                model.addRow(new Object[]{author.getId(), author.getFullname(), "Autor", "-", author.getBookQuantity()});
-            }
-            for (Manager manager : storage.getGerentes()) {
-                if (manager.getPublisher() == null){
-                    model.addRow(new Object[]{manager.getId(), manager.getFullname(), "Gerente", "-", 0});
-                }else{
-                model.addRow(new Object[]{manager.getId(), manager.getFullname(), "Gerente", manager.getPublisher().getName(), 0});
-                }
-            }
-            for (Narrator narrator : storage.getNarradores()) {
-                model.addRow(new Object[]{narrator.getId(), narrator.getFullname(), "Narrador", "-", narrator.getBookQuantity()});
-            }
+            updatePersonasTableM(model);
             }catch(Exception ex){
                 Response response = new Response("Unexpected error", Status.INTERNAL_SERVER_ERROR);
                 JOptionPane.showMessageDialog(null, response.getMessage(), "Response Message", JOptionPane.INFORMATION_MESSAGE);

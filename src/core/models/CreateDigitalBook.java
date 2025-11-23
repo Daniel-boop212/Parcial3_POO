@@ -6,6 +6,7 @@ package core.models;
 
 import core.Author;
 import core.DigitalBook;
+import core.Narrator;
 import core.Publisher;
 import core.controllers.utils.Response;
 import core.controllers.utils.Status;
@@ -18,73 +19,11 @@ import java.util.regex.Pattern;
  * @author dandr
  */
 public class CreateDigitalBook implements BookService{
-    private static final Pattern CUSTOM_CODE_PATTERN = Pattern.compile("^\\d{3}-\\d-\\d{2}-\\d{6}-\\d$");
     
     @Override
-    public Response createBook(String title, String[] authorsData, String isbn, String genre, String format, String value, String publisherData, String pages, String copies, String hyperlink, String duration, String[] narratorData) {
+    public Response createBook(String title, ArrayList<Author> authors, String isbn, String genre, String format, double valueDou, Publisher publisher, int pages, int copies, String hyperlink, int duration, Narrator narrator){
         try{  
-            
-            if (!CUSTOM_CODE_PATTERN.matcher(isbn).matches()) {
-                return new Response("ISBN must follow XXX-X-XX-XXXXXX-X format.", Status.BAD_REQUEST);
-            }
-            
-            double valueDou; 
-            String publisherNit;
-            try{
-                valueDou = Double.parseDouble(value);
-                if (valueDou < 0) {
-                    return new Response("price must be positive", Status.BAD_REQUEST);
-                }
-            }catch (NumberFormatException ex) {
-                return new Response("price must be numeric", Status.BAD_REQUEST);
-            }
-            
-            if (publisherData.trim().equals("Seleccione uno...")){
-                return new Response("select a publisher", Status.BAD_REQUEST);
-            }
-           
-            publisherNit = publisherData.split(" ")[1].replace("(", "").replace(")", "");
-            
-            if (isbn.trim().equals("")) {
-                return new Response("isbn must be not empty", Status.BAD_REQUEST);
-            }
-            
-            if (title.trim().equals("")) {
-                return new Response("Title must be not empty", Status.BAD_REQUEST);
-            }
-            
-            if (format.trim().equals("Seleccione uno...")){
-                return new Response("select a format", Status.BAD_REQUEST);
-            }
-            
-            if (genre.trim().equals("Seleccione uno...")){
-                return new Response("select a genre", Status.BAD_REQUEST);
-            }
-            
             Storage storage = Storage.getInstance();
-            
-            if (authorsData.length == 1 && authorsData[0].trim().equals("Seleccione uno...")){
-                return new Response("select at least 1 author", Status.BAD_REQUEST);
-            }
-            
-            ArrayList<Author> authors = new ArrayList<>();
-            for (String authorData : authorsData) {
-                long authorId = Long.parseLong(authorData.split(" - ")[0]);
-                for (Author author : storage.getAutores()) {
-                    if (author.getId() == authorId) {
-                        authors.add(author);
-                    }
-                }
-            }
-            
-            Publisher publisher = null;
-            for (Publisher publish : storage.getEditoriales()) {
-                if (publish.getNit().equals(publisherNit)) {
-                    publisher = publish;
-                }
-            }
-            
-            
             if (hyperlink.equals("")){
                 if (!storage.addDigitalBook(new DigitalBook(title, authors, isbn, genre, format, valueDou, publisher))) {
                     return new Response("A digital book with that isbn already exists", Status.BAD_REQUEST);

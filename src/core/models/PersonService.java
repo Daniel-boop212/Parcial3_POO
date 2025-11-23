@@ -13,6 +13,6 @@ import core.controllers.utils.Response;
  */
 public interface PersonService {
     
-    Response createPerson(String id, String firstname, String lastname);
+    Response createPerson(int id, String firstname, String lastname);
         
 }

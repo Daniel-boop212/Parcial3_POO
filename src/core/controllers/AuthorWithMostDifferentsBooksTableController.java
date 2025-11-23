@@ -7,6 +7,7 @@ package core.controllers;
 import core.Author;
 import core.controllers.utils.Response;
 import core.controllers.utils.Status;
+import static core.models.AuthorWithMostDifferentsBooksTable.updateAuthorWithMostDifferentsBooksM;
 import core.models.storage.Storage;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -33,15 +34,12 @@ public class AuthorWithMostDifferentsBooksTableController {
                     authorsMax.add(author);
                 }
             }
-            
             if (authorsMax.isEmpty()){
                 Response response = new Response("There`s no authors", Status.NOT_FOUND);
                 JOptionPane.showMessageDialog(null, response.getMessage(), "Response Message", JOptionPane.INFORMATION_MESSAGE);      
                 return;
             }
-            for (Author author : authorsMax) {
-                model.addRow(new Object[]{author.getId(), author.getFullname(), maxPublishers});
-            }
+            updateAuthorWithMostDifferentsBooksM(model, authorsMax, maxPublishers);
             }catch(Exception ex){
                 Response response = new Response("Unexpected error", Status.INTERNAL_SERVER_ERROR);
                 JOptionPane.showMessageDialog(null, response.getMessage(), "Response Message", JOptionPane.INFORMATION_MESSAGE);

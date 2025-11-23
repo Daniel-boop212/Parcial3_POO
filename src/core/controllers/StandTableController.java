@@ -4,10 +4,9 @@
  */
 package core.controllers;
 
-import core.Stand;
 import core.controllers.utils.Response;
 import core.controllers.utils.Status;
-import core.models.storage.Storage;
+import static core.models.StandTable.updateStandTableM;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,19 +18,8 @@ public class StandTableController {
     
     public static void updateStandTable(DefaultTableModel model){ 
         try{
-            Storage storage = Storage.getInstance();
             
-            for (Stand stand : storage.getStands()) {
-            String publishers = "";
-            if (stand.getPublisherQuantity() > 0) {
-                publishers += stand.getPublishers().get(0).getName();
-                for (int i = 1; i < stand.getPublisherQuantity(); i++) {
-                    publishers += (", " + stand.getPublishers().get(i).getName());
-                }
-            }
-            model.addRow(new Object[]{stand.getId(), stand.getPrice(), stand.getPublisherQuantity() > 0 ? "Si" : "No", publishers});
-        }
-            
+            updateStandTableM(model);
             }catch(Exception ex){
                 Response response = new Response("Unexpected error", Status.INTERNAL_SERVER_ERROR);
                 JOptionPane.showMessageDialog(null, response.getMessage(), "Response Message", JOptionPane.INFORMATION_MESSAGE);
