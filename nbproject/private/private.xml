@@ -3,12 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/dandr/Documents/Estructuras/Parcial3_POO-main/Parcial3_POO-main/src/core/controllers/BookByFormatTableController.java</file>
-            <file>file:/C:/Users/dandr/Documents/Estructuras/Parcial3_POO-main/Parcial3_POO-main/src/core/main/Main.java</file>
+            <file>file:/C:/Users/dandr/Documents/Estructuras/Parcial3_POO-main/Parcial3_POO-main/src/core/models/Stand.java</file>
+            <file>file:/C:/Users/dandr/Documents/Estructuras/Parcial3_POO-main/Parcial3_POO-main/src/core/models/Person.java</file>
+            <file>file:/C:/Users/dandr/Documents/Estructuras/Parcial3_POO-main/Parcial3_POO-main/src/core/models/PrintedBook.java</file>
             <file>file:/C:/Users/dandr/Documents/Estructuras/Parcial3_POO-main/Parcial3_POO-main/src/core/controllers/AuthorWithMostDifferentsBooksTableController.java</file>
-            <file>file:/C:/Users/dandr/Documents/Estructuras/Parcial3_POO-main/Parcial3_POO-main/src/core/controllers/EditorialTableController.java</file>
-            <file>file:/C:/Users/dandr/Documents/Estructuras/Parcial3_POO-main/Parcial3_POO-main/src/core/controllers/BookByAuthorTableController.java</file>
+            <file>file:/C:/Users/dandr/Documents/Estructuras/Parcial3_POO-main/Parcial3_POO-main/src/core/models/Audiobook.java</file>
+            <file>file:/C:/Users/dandr/Documents/Estructuras/Parcial3_POO-main/Parcial3_POO-main/src/core/models/Publisher.java</file>
+            <file>file:/C:/Users/dandr/Documents/Estructuras/Parcial3_POO-main/Parcial3_POO-main/src/core/controllers/AuthorController.java</file>
+            <file>file:/C:/Users/dandr/Documents/Estructuras/Parcial3_POO-main/Parcial3_POO-main/src/core/models/Manager.java</file>
+            <file>file:/C:/Users/dandr/Documents/Estructuras/Parcial3_POO-main/Parcial3_POO-main/src/core/models/Book.java</file>
+            <file>file:/C:/Users/dandr/Documents/Estructuras/Parcial3_POO-main/Parcial3_POO-main/src/core/models/DigitalBook.java</file>
+            <file>file:/C:/Users/dandr/Documents/Estructuras/Parcial3_POO-main/Parcial3_POO-main/src/core/main/Main.java</file>
+            <file>file:/C:/Users/dandr/Documents/Estructuras/Parcial3_POO-main/Parcial3_POO-main/src/core/controllers/NarratorController.java</file>
+            <file>file:/C:/Users/dandr/Documents/Estructuras/Parcial3_POO-main/Parcial3_POO-main/src/core/models/storage/Storage.java</file>
+            <file>file:/C:/Users/dandr/Documents/Estructuras/Parcial3_POO-main/Parcial3_POO-main/src/core/models/Narrator.java</file>
+            <file>file:/C:/Users/dandr/Documents/Estructuras/Parcial3_POO-main/Parcial3_POO-main/src/core/controllers/StandController.java</file>
+            <file>file:/C:/Users/dandr/Documents/Estructuras/Parcial3_POO-main/Parcial3_POO-main/src/core/controllers/ManagerController.java</file>
             <file>file:/C:/Users/dandr/Documents/Estructuras/Parcial3_POO-main/Parcial3_POO-main/src/core/views/MegaferiaFrame.java</file>
+            <file>file:/C:/Users/dandr/Documents/Estructuras/Parcial3_POO-main/Parcial3_POO-main/src/core/models/Author.java</file>
         </group>
     </open-files>
 </project-private>

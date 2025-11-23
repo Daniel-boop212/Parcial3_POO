@@ -1,4 +1,6 @@
 
+package core.main;
+
 import com.formdev.flatlaf.FlatDarkLaf;
 import core.views.MegaferiaFrame;
 import javax.swing.UIManager;

@@ -2,18 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package core.controllers;
+package core.models;
 
 import core.controllers.utils.Response;
-import static core.models.BuyStand.buyStandM;
+
 
 /**
  *
  * @author dandr
  */
-public class BuyStandController {
+public interface PublisherService {
     
-    public static Response buyStand(String[] standIds, String[] publishersData){
-        return buyStandM(standIds,publishersData);
-    }
+    Response createPublisher(String nit, String name, String address, String[] managerData);
+    
 }

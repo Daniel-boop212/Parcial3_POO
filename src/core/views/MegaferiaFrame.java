@@ -5,6 +5,7 @@
 package core.views;
 
 import static core.controllers.AuthorController.CreateAuthor;
+import static core.controllers.ManagerController.createManager;
 import static core.controllers.AuthorWithMostDifferentsBooksTableController.updateAuthorWithMostDifferentsBooks;
 import static core.controllers.BookByAuthorTableController.updateBookByAuthorTable;
 import static core.controllers.BookByFormatTableController.updateBookByFormatTable;
@@ -12,8 +13,7 @@ import static core.controllers.BookControler.createBook;
 import static core.controllers.BuyStandController.buyStand;
 import static core.controllers.EditorialTableController.updateEditorialTable;
 import static core.controllers.LibroTableController.updateBookTable;
-import static core.controllers.ManagerController.CreateManager;
-import static core.controllers.NarratorController.CreateNarrator;
+import static core.controllers.NarratorController.createNarrator;
 import static core.controllers.PersonasTableController.updatePersonasTable;
 import static core.controllers.PublisherController.createPublisher;
 import java.util.ArrayList;
@@ -1440,7 +1440,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String firstname = jTextFieldFirstnamePerson.getText();
         String lastname = jTextFieldLastnamePerson.getText();
         
-        Response response = CreateManager(id, firstname, lastname);
+        Response response = createManager(id, firstname, lastname);
         
         if (response.getStatus() >= 500) {
             JOptionPane.showMessageDialog(null, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
@@ -1464,7 +1464,7 @@ public class MegaferiaFrame extends javax.swing.JFrame {
         String firstname = jTextFieldFirstnamePerson.getText();
         String lastname = jTextFieldLastnamePerson.getText();
         
-        Response response = CreateNarrator(id, firstname, lastname);
+        Response response = createNarrator(id, firstname, lastname);
         
         if (response.getStatus() >= 500) {
             JOptionPane.showMessageDialog(null, response.getMessage(), "Error " + response.getStatus(), JOptionPane.ERROR_MESSAGE);
