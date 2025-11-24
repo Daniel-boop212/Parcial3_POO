@@ -20,11 +20,11 @@ import java.util.ArrayList;
  *
  * @author edangulo
  */
-public class Storage {
-    
+public class Storage implements IMegaferiaStorage {
+
     // Instancia Singleton
     private static Storage instance;
-    
+
     // Atributos del Storage
     private ArrayList<Person> persons;
     private ArrayList<Stand> stands;
@@ -36,7 +36,7 @@ public class Storage {
     private ArrayList<DigitalBook> librosDigital;
     private ArrayList<Audiobook> audioLibros;
     private ArrayList<Book> libros;
-    
+
     private Storage() {
         this.persons = new ArrayList<>();
         this.stands = new ArrayList<>();
@@ -49,14 +49,14 @@ public class Storage {
         this.audioLibros = new ArrayList<>();
         this.libros = new ArrayList<>();
     }
-    
+
     public static Storage getInstance() {
         if (instance == null) {
             instance = new Storage();
         }
         return instance;
     }
-    
+
     public boolean addPerson(Person person) {
         for (Person p : this.persons) {
             if (p.getId() == person.getId()) {
@@ -80,11 +80,9 @@ public class Storage {
     public ArrayList<Stand> getStands() {
         return stands;
     }
-    
-    
 
     public boolean addAuthor(Author author) {
-        for (Author a: this.autores) {
+        for (Author a : this.autores) {
             if (a.getId() == author.getId()) {
                 return false;
             }
@@ -98,7 +96,7 @@ public class Storage {
     }
 
     public boolean addManager(Manager manager) {
-        for (Manager m: this.gerentes) {
+        for (Manager m : this.gerentes) {
             if (m.getId() == manager.getId()) {
                 return false;
             }
@@ -110,9 +108,9 @@ public class Storage {
     public ArrayList<Manager> getGerentes() {
         return gerentes;
     }
-    
-    public Manager getManager(int id){
-        for (Manager m: this.gerentes) {
+
+    public Manager getManager(int id) {
+        for (Manager m : this.gerentes) {
             if (m.getId() == id) {
                 return m;
             }
@@ -121,7 +119,7 @@ public class Storage {
     }
 
     public boolean addNarrator(Narrator narrator) {
-        for (Narrator n: this.narradores) {
+        for (Narrator n : this.narradores) {
             if (n.getId() == narrator.getId()) {
                 return false;
             }
@@ -133,11 +131,9 @@ public class Storage {
     public ArrayList<Narrator> getNarradores() {
         return narradores;
     }
-    
-    
 
     public boolean addPublisher(Publisher publisher) {
-        for (Publisher p: this.editoriales) {
+        for (Publisher p : this.editoriales) {
             if (p.getNit().equals(publisher.getNit())) {
                 return false;
             }
@@ -149,10 +145,9 @@ public class Storage {
     public ArrayList<Publisher> getEditoriales() {
         return editoriales;
     }
-        
 
     public boolean addPrintedBook(PrintedBook printedBook) {
-       for (PrintedBook p: this.librosImpresos) {
+        for (PrintedBook p : this.librosImpresos) {
             if (p.getIsbn().equals(printedBook.getIsbn())) {
                 return false;
             }
@@ -163,7 +158,7 @@ public class Storage {
     }
 
     public boolean addDigitalBook(DigitalBook digitalBook) {
-        for (DigitalBook p: this.librosDigital) {
+        for (DigitalBook p : this.librosDigital) {
             if (p.getIsbn().equals(digitalBook.getIsbn())) {
                 return false;
             }
@@ -174,7 +169,7 @@ public class Storage {
     }
 
     public boolean addAudioBook(Audiobook audiobook) {
-        for (Audiobook p: this.audioLibros) {
+        for (Audiobook p : this.audioLibros) {
             if (p.getIsbn().equals(audiobook.getIsbn())) {
                 return false;
             }
@@ -199,9 +194,5 @@ public class Storage {
     public ArrayList<Book> getLibros() {
         return libros;
     }
-    
-    
-    
-    
-    
+
 }
