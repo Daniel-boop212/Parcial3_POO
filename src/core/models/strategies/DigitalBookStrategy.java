@@ -32,6 +32,7 @@ public class DigitalBookStrategy implements IBookCreationStrategy {
                 authors.add(author);
             }
 
+            Publisher publisher = findPublisherByNit(request.getPublisherNit(), storage);
             if (publisher == null) {
                 return new Response("Publisher with NIT " + request.getPublisherNit() + " not found",
                         Status.BAD_REQUEST);
