@@ -70,4 +70,26 @@ public interface IMegaferiaStorage {
 
     // General book operations
     ArrayList<Book> getLibros();
+
+    // Observer pattern methods
+    /**
+     * Suscribe un observador a los cambios en el almacenamiento.
+     * 
+     * @param observer El observador a suscribir
+     */
+    void subscribe(IStorageObserver observer);
+
+    /**
+     * Desuscribe un observador de los cambios en el almacenamiento.
+     * 
+     * @param observer El observador a desuscribir
+     */
+    void unsubscribe(IStorageObserver observer);
+
+    /**
+     * Notifica a todos los observadores suscritos.
+     * 
+     * @param eventType El tipo de evento que ocurrió
+     */
+    void notifyObservers(String eventType);
 }

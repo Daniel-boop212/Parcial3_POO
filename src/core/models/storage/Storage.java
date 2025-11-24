@@ -15,6 +15,7 @@ import core.PrintedBook;
 import core.Publisher;
 import core.Stand;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  *
@@ -36,6 +37,9 @@ public class Storage implements IMegaferiaStorage {
     private ArrayList<DigitalBook> librosDigital;
     private ArrayList<Audiobook> audioLibros;
     private ArrayList<Book> libros;
+    
+    // Observadores para notificaciones de cambios
+    private HashSet<IStorageObserver> observers;
 
     private Storage() {
         this.persons = new ArrayList<>();
@@ -48,6 +52,7 @@ public class Storage implements IMegaferiaStorage {
         this.librosDigital = new ArrayList<>();
         this.audioLibros = new ArrayList<>();
         this.libros = new ArrayList<>();
+        this.observers = new HashSet<>();
     }
 
     public static Storage getInstance() {
@@ -74,6 +79,7 @@ public class Storage implements IMegaferiaStorage {
             }
         }
         this.stands.add(stand);
+        notifyObservers("Stand");
         return true;
     }
 
@@ -88,6 +94,7 @@ public class Storage implements IMegaferiaStorage {
             }
         }
         this.autores.add(author);
+        notifyObservers("Author");
         return true;
     }
 
@@ -102,6 +109,7 @@ public class Storage implements IMegaferiaStorage {
             }
         }
         this.gerentes.add(manager);
+        notifyObservers("Manager");
         return true;
     }
 
@@ -125,6 +133,7 @@ public class Storage implements IMegaferiaStorage {
             }
         }
         this.narradores.add(narrator);
+        notifyObservers("Narrator");
         return true;
     }
 
@@ -139,6 +148,7 @@ public class Storage implements IMegaferiaStorage {
             }
         }
         this.editoriales.add(publisher);
+        notifyObservers("Publisher");
         return true;
     }
 
@@ -154,6 +164,7 @@ public class Storage implements IMegaferiaStorage {
         }
         this.librosImpresos.add(printedBook);
         this.libros.add(printedBook);
+        notifyObservers("Book");
         return true;
     }
 
@@ -165,6 +176,7 @@ public class Storage implements IMegaferiaStorage {
         }
         this.librosDigital.add(digitalBook);
         this.libros.add(digitalBook);
+        notifyObservers("Book");
         return true;
     }
 
@@ -176,6 +188,7 @@ public class Storage implements IMegaferiaStorage {
         }
         this.audioLibros.add(audiobook);
         this.libros.add(audiobook);
+        notifyObservers("Book");
         return true;
     }
 
@@ -193,6 +206,46 @@ public class Storage implements IMegaferiaStorage {
 
     public ArrayList<Book> getLibros() {
         return libros;
+    }
+
+    // Observer pattern implementation
+    @Override
+    public void subscribe(IStorageObserver observer) {
+        this.observers.add(observer);
+    }
+
+    @Override
+    public void unsubscribe(IStorageObserver observer) {
+        this.observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers(String eventType) {
+        for (IStorageObserver observer : observers) {
+            switch (eventType) {
+                case "Stand":
+                    observer.onStandAdded();
+                    break;
+                case "Book":
+                    observer.onBookAdded();
+                    break;
+                case "Author":
+                    observer.onAuthorAdded();
+                    break;
+                case "Narrator":
+                    observer.onNarratorAdded();
+                    break;
+                case "Publisher":
+                    observer.onPublisherAdded();
+                    break;
+                case "Manager":
+                    observer.onManagerAdded();
+                    break;
+                case "Purchase":
+                    observer.onStandPurchased();
+                    break;
+            }
+        }
     }
 
 }
