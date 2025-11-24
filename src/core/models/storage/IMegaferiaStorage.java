@@ -16,6 +16,11 @@ import core.Publisher;
 import core.Stand;
 import java.util.ArrayList;
 
+/**
+ * Interfaz que abstrae la capa de almacenamiento.
+ * Permite que los controladores dependan de esta abstracción en lugar de la
+ * clase Storage concreta.
+ */
 public interface IMegaferiaStorage {
 
     // Stand operations
